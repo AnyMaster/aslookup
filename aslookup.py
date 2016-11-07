@@ -4,15 +4,14 @@
 
 # On first run, it'll download the latest ASN data (updated hourly) from https://iptoasn.com/data/ip2asn-v4.tsv.gz
 # To get the freshest ASN data, delete your local copy of ip2asn-v4.tsv.gz and re-run the script.
-# AS argument should not contain any spaces.
 
 # Usage examples:
-# python asnlookup.py microsoft
-# python asnlookup.py 205.198.42
-# python asnlookup.py 223.74.50
-# python asnlookup.py google
+# python aslookup.py microsoft
+# python aslookup.py 205.198.42
+# python aslookup.py 223.74.50
+# python aslookup.py google
 
-# author: @_0rbz (Fabrizio Siciliano)
+# author: @0rbz_ (Fabrizio Siciliano)
 
 import requests
 import gzip
@@ -44,7 +43,7 @@ if os.path.isfile(as_db_name):
 else:
 
     with open(as_db_name, "wb") as f:
-        print "Downloading latest ASN Data [%s]..." % as_db_name
+        print "[*] Downloading latest ASN Data [%s]..." % as_db_name
         ua = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1'}
         response = requests.get(as_db, stream=True, headers=ua)
         length = response.headers.get('content-length')
