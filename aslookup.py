@@ -45,7 +45,8 @@ else:
 
     with open(as_db_name, "wb") as f:
         print "Downloading latest ASN Data [%s]..." % as_db_name
-        response = requests.get(as_db, stream=True)
+        ua = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1'}
+        response = requests.get(as_db, stream=True, headers=ua)
         length = response.headers.get('content-length')
         if length is None:
             f.write(response.content)
