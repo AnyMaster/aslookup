@@ -1,16 +1,18 @@
+#!/usr/bin/env python
+
 # AS to IP Lookup
 
-# On first run, it'll download the latest AS data (updated hourly) from https://iptoasn.com/data/ip2asn-v4.tsv.gz
-# To get the freshest AS data, delete your local copy of ip2asn-v4.tsv.gz and re-run the script.
+# On first run, it'll download the latest ASN data (updated hourly) from https://iptoasn.com/data/ip2asn-v4.tsv.gz
+# To get the freshest ASN data, delete your local copy of ip2asn-v4.tsv.gz and re-run the script.
 # AS argument should not contain any spaces.
 
 # Usage examples:
-# python aslookup.py microsoft
-# python aslookup.py 205.198.42
-# python aslookup.py 223.74.50
-# python aslookup.py google
+# python asnlookup.py microsoft
+# python asnlookup.py 205.198.42
+# python asnlookup.py 223.74.50
+# python asnlookup.py google
 
-# author: @0rbz_ (Fabrizio Siciliano)
+# author: @_0rbz (Fabrizio Siciliano)
 
 import requests
 import gzip
@@ -57,10 +59,10 @@ else:
                 sys.stdout.write("\r|%s%s|" % ('=' * end, ' ' * (42-end)) )
                 sys.stdout.flush()
 
-f = gzip.open(as_db_name, "rb")
-search = f.readlines()
-f.close()
+    f = gzip.open(as_db_name, "rb")
+    search = f.readlines()
+    f.close()
 
-for x, line in enumerate(search):
-    if as_name.lower() in line.lower():
-        for line in search[x:x+1]: print color.g + line + color.b,
+    for x, line in enumerate(search):
+        if as_name.lower() in line.lower():
+            for line in search[x:x+1]: print color.g + line + color.b,
